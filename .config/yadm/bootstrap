@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# https://www.devdungeon.com/content/rebind-caps-lock-key-escapecontrol
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
 
 sudo apt-get update 
