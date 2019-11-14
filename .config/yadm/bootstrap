@@ -4,8 +4,18 @@
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
 
 sudo apt-get update 
-sudo apt-get -y install zsh neovim
+sudo apt-get -y install neovim wget curl
+
+echo "## laptop power settings"
+sudo apt-get -y install tlp tlp-rdw
 
 echo "## docker"
 sudo apt-get -y install docker.io docker-compose
 sudo usermod -aG docker $USER
+
+echo "## zsh"
+sudo apt-get -y install zsh
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+
