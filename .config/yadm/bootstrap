@@ -4,4 +4,8 @@
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
 
 sudo apt-get update 
-sudo apt-get install zsh neovim
+sudo apt-get -y install zsh neovim
+
+echo "## docker"
+sudo apt-get -y install docker.io docker-compose
+sudo usermod -aG docker $USER
