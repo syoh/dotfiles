@@ -28,12 +28,12 @@ sudo apt-get -y -f install && \
     rm google-chrome-stable_current_amd64.deb
 
 echo "## remove stuff"
-sudo apt-get purge --auto-remove evolution thunderbird libreoffice-core
+# sudo apt-get purge --auto-remove evolution thunderbird libreoffice-core
 
 echo "## jabref"
 sudo apt-get install --no-install-recommends jabref
 
-sudo apt-get install caffeine
+# sudo apt-get install caffeine
 # zoom, mathpix, caffeine, PIA, jabref, slack, insync
 
 echo "## thefuck"
