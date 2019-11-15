@@ -15,14 +15,16 @@ sudo apt-get -y install docker.io docker-compose && \
 	sudo usermod -aG docker $USER
 
 echo "## zsh"
-sudo apt-get -y install zsh && \
-	chsh -s $(which zsh) && \
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sudo apt install -y zsh powerline fonts-powerline && \
+    RUNZSH=no CHSH=no sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" && \
+    test -f ~/.zshrc.pre-oh-my-zsh && \
+    mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc && \ ## restore my .zshrc
+    chsh -s $(which zsh)
 
 echo "## chrome browser"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-	sudo dpkg -i google-chrome-stable_current_amd64.deb && \
-	rm google-chrome-stable_current_amd64.deb && \
-	sudo apt-get -y -f install
+    sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt-get -y -f install && \
+    rm google-chrome-stable_current_amd64.deb
 
 # zoom, mathpix, caffeine, PIA, jabref, slack, insync
