@@ -27,4 +27,7 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &
 sudo apt-get -y -f install && \
     rm google-chrome-stable_current_amd64.deb
 
+echo "## remove stuff"
+sudo apt-get purge --auto-remove evolution thunderbird
+
 # zoom, mathpix, caffeine, PIA, jabref, slack, insync
