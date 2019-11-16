@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git thefuck vi-mode docker-compose)
+plugins=(git vi-mode docker-compose)
 # https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins
 
 source $ZSH/oh-my-zsh.sh
@@ -99,25 +99,26 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# disable shell pausing (Ctrl-s) and unpausing (Ctrl-q)
+stty -ixon
+
+# zsh alias examples
+# https://blog.lftechnology.com/command-line-productivity-with-zsh-aliases-28b7cebfdff9
+
 trimfunc() {
     convert -trim $1 $1
 }
 alias trim=trimfunc
-# alias getmyip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias getmyip="host myip.opendns.com resolver1.opendns.com | grep -oP '(?<=^myip.opendns.com has address ).+(?=$)'"
 alias screen='TERM=screen screen'
-
-## https://blog.ostermiller.org/resetting-wireless-networking-on-ubuntu-without-rebooting/
-alias wifi='sudo modprobe -r iwlwifi && sudo modprobe iwlwifi'
 
 alias ll='ls -alF'
 alias la='ls -AF'
 alias  l='ls -CF'
 
 getdnsfunc() {
-    echo $(nmcli device show wlp4s0 | grep 'IP4.DNS\[1\]' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
+    echo $(nmcli device show wlp2s0 | grep 'IP4.DNS\[1\]' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 }
 alias getdns=getdnsfunc
 
-# disable shell pausing (Ctrl-s) and unpausing (Ctrl-q)
-stty -ixon
+alias -s yml=vim

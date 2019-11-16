@@ -43,3 +43,13 @@ sudo pip3 install thefuck
 echo "## gnome terminal settings"
 # https://dimitar.me/how-to-export-import-gnome-terminal-profiles/
 # https://gist.github.com/reavon/0bbe99150810baa5623e5f601aa93afc
+
+echo "## slack"
+wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.1.2-amd64.deb && \
+	sudo dpkg -i slack-desktop-4.1.2-amd64.deb
+sudo apt-get -y -f install && \
+	rm slack-desktop-4.1.2-amd64.deb
+
+echo "## PIA"
+wget https://installers.privateinternetaccess.com/download/pia-linux-1.6-03756.run && \
+    sh pia-linux-1.6-03756.run
