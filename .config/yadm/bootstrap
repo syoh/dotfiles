@@ -50,6 +50,7 @@ wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.1.2-amd64.d
 sudo apt-get -y -f install && \
 	rm slack-desktop-4.1.2-amd64.deb
 
-echo "## PIA"
+echo "## PIA and VPN"
 wget https://installers.privateinternetaccess.com/download/pia-linux-1.6-03756.run && \
     sh pia-linux-1.6-03756.run
+sudo apt-get -y install network-manager-openvpn*
