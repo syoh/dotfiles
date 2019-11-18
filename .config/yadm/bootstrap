@@ -54,3 +54,8 @@ echo "## PIA and VPN"
 wget https://installers.privateinternetaccess.com/download/pia-linux-1.6-03756.run && \
     sh pia-linux-1.6-03756.run
 sudo apt-get -y install network-manager-openvpn*
+
+echo "## JabRef"
+wget https://builds.jabref.org/master/JabRef-portable_linux.tar.gz && \
+    sudo tar -xf JabRef-portable_linux.tar.gz --directory /usr/local/share && \
+    sudo ln -s /usr/local/share/JabRef/bin/JabRef  /usr/local/bin/JabRef

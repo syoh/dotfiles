@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Icon=/usr/local/share/JabRef/lib/JabRef.png
+Exec=bash -c 'cd /home/syoh/Documents/JabRef && /usr/local/bin/JabRef'
+Name=JabRef
