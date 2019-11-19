@@ -30,12 +30,6 @@ sudo apt-get -y -f install && \
 echo "## remove stuff"
 sudo apt-get purge --auto-remove evolution thunderbird libreoffice-core
 
-echo "## jabref"
-sudo apt-get -y install --no-install-recommends jabref
-
-# sudo apt-get install caffeine
-# zoom, mathpix, caffeine, PIA, jabref, slack, insync
-
 echo "## thefuck"
 sudo apt-get -y install python3-dev python3-pip python3-setuptools
 sudo pip3 install thefuck
@@ -53,9 +47,17 @@ sudo apt-get -y -f install && \
 echo "## PIA and VPN"
 wget https://installers.privateinternetaccess.com/download/pia-linux-1.6-03756.run && \
     sh pia-linux-1.6-03756.run
-sudo apt-get -y install network-manager-openvpn*
+sudo apt-get -y install network-manager-openvpn* && \
+    rm pia-linux-1.6-03756.run 
 
 echo "## JabRef"
 wget https://builds.jabref.org/master/JabRef-portable_linux.tar.gz && \
-    sudo tar -xf JabRef-portable_linux.tar.gz --directory /usr/local/share && \
+    sudo tar -xf JabRef-portable_linux.tar.gz --directory ~/.local/share && \
     sudo ln -s /usr/local/share/JabRef/bin/JabRef  /usr/local/bin/JabRef
+
+# echo "## jabref"
+# sudo apt-get -y install --no-install-recommends jabref
+
+# sudo apt-get install caffeine
+# zoom, mathpix, caffeine, PIA, jabref, slack, insync
+

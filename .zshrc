@@ -122,3 +122,5 @@ getdnsfunc() {
 alias getdns=getdnsfunc
 
 alias -s yml=vim
+
+bindkey "jk" vi-cmd-mode

@@ -19,6 +19,7 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'wesQ3/vim-windowswap'
+    Plug 'Shougo/deoplete.nvim'
 
     function! BuildComposer(info)
       if a:info.status != 'unchanged' || a:info.force
@@ -157,3 +158,8 @@ let g:templates_directory = "/home/syoh/Dropbox/sync/templates-vim"
 
 "" yaml files
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+""""""""""""""""""""
+"" completion 
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
