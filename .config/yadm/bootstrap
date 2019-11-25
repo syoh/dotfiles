@@ -5,7 +5,7 @@ dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']
 
 sudo apt-get update 
 
-sudo apt-get -y install neovim wget curl zathura openssh-server
+sudo apt-get -y install neovim wget curl zathura openssh-server pdftk
 
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 
