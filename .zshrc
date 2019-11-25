@@ -116,11 +116,14 @@ alias ll='ls -alF'
 alias la='ls -AF'
 alias  l='ls -CF'
 
+# custom aliases
 getdnsfunc() {
     echo $(nmcli device show wlp2s0 | grep 'IP4.DNS\[1\]' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 }
 alias getdns=getdnsfunc
+alias -s yml=vim        # entring yml filename opens them in vim
+alias yacp="yadm add -u && yadm commit && yadm push"
+alias gacp="git add -u && git commit && git push"
 
-alias -s yml=vim
-
+# keyboard bindings
 bindkey "jk" vi-cmd-mode
