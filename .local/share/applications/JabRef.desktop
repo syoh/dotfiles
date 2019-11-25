@@ -2,5 +2,5 @@
 Type=Application
 Terminal=false
 Icon=/usr/local/share/JabRef/lib/JabRef.png
-Exec=/usr/local/bin/JabRef
+Exec=([ -d ~/.config/jabref ] || mkdir ~/.config/jabref; cd ~/.config/jabref; /usr/local/bin/JabRef)
 Name=JabRef
