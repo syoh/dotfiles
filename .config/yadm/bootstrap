@@ -40,24 +40,30 @@ echo "## gnome terminal settings"
 
 echo "## slack"
 wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.1.2-amd64.deb && \
-	sudo dpkg -i slack-desktop-4.1.2-amd64.deb
-sudo apt-get -y -f install && \
+	sudo dpkg -i slack-desktop-4.1.2-amd64.deb && \
+    sudo apt-get -y -f install && \
 	rm slack-desktop-4.1.2-amd64.deb
 
 echo "## PIA and VPN"
 wget https://installers.privateinternetaccess.com/download/pia-linux-1.6-03756.run && \
-    sh pia-linux-1.6-03756.run
-sudo apt-get -y install network-manager-openvpn* && \
+    sh pia-linux-1.6-03756.run && \
+    sudo apt-get -y install network-manager-openvpn* && \
     rm pia-linux-1.6-03756.run 
 
 echo "## JabRef"
 wget https://builds.jabref.org/master/JabRef-portable_linux.tar.gz && \
-    sudo tar -xf JabRef-portable_linux.tar.gz --directory ~/.local/share && \
-    sudo ln -s /usr/local/share/JabRef/bin/JabRef  /usr/local/bin/JabRef
+    sudo ln -s /usr/local/share/JabRef/bin/JabRef  /usr/local/bin/JabRef && \
+    rm JabRef-portable_linux.tar.gz && \
+    sudo ln -sf "$HOME/.local/share/applications/JabRef.desktop" /usr/share/applications/.
 
-# echo "## jabref"
-# sudo apt-get -y install --no-install-recommends jabref
+echo "## vivaldi"
+wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add - && \
+    sudo add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main' && \
+    sudo apt update && sudo apt install vivaldi-stable
 
-# sudo apt-get install caffeine
+echo "## launchers"
+dconf write /org/gnome/shell/favorite-apps \
+    "['org.gnome.Nautilus.desktop', 'JabRef.desktop', 'piavpn.desktop', 'vivaldi-stable.desktop', 'google-chrome.desktop', 'firefox-esr.desktop', 'slack.desktop', 'org.gnome.Terminal.desktop']"
+
+
 # zoom, mathpix, caffeine, PIA, jabref, slack, insync
-
