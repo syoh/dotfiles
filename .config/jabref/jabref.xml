@@ -36,7 +36,7 @@
           <entry key="columnInSortOrder" value=""/>
           <entry key="columnInSortOrderType" value=""/>
           <entry key="columnNames" value="groups;linked_id;field:entrytype;field:author/editor;field:title;field:year;field:journal/booktitle;field:bibtexkey"/>
-          <entry key="columnWidths" value="28.0;28.0;78.31394598977195;472.4740434787741;770.2838949149092;45.06735839266352;10.0;10.0"/>
+          <entry key="columnWidths" value="28.0;28.0;75.26595636392733;474.27931131243446;775.7560683846401;40.87516185349246;10.0;10.0"/>
           <entry key="confirmDelete" value="true"/>
           <entry key="consoleCommand" value=""/>
           <entry key="cyclePreview" value="Preview;/ieee.csl"/>
