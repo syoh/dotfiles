@@ -3,3 +3,5 @@
 	name = Sang-Yun Oh
 [credential]
 	helper = cache --timeout=36000
+[core]
+	editor = vim

@@ -68,4 +68,4 @@ dconf write /org/gnome/shell/favorite-apps \
 echo "## gist from commandline"
 sudo gem install gist
 
-# zoom, mathpix, caffeine, PIA, jabref, slack, insync
+# zoom, mathpix, caffeine, insync
