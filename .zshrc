@@ -121,7 +121,12 @@ getdnsfunc() {
     echo $(nmcli device show wlp2s0 | grep 'IP4.DNS\[1\]' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 }
 alias getdns=getdnsfunc
-alias -s yml=vim        # entring yml filename opens them in vim
+alias -s yml=vim            # entring yml filename opens them in vim
+rmpage1func() {         
+    pdftk "$1" cat 2-end output "$1--" && cp "$1--" "$1"
+}
+alias rmpage1=rmpage1func   # remove first page of pdf file
+
 alias yacp="yadm add -u && yadm commit && yadm push"
 alias gacp="git add -u && git commit && git push"
 
