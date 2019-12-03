@@ -21,7 +21,7 @@
           <entry key="autoCompFirstNameMode" value="BOTH"/>
           <entry key="autoCompLF" value="false"/>
           <entry key="autoComplete" value="false"/>
-          <entry key="autoCompleteFields" value="title;entryset;author;publisher;editor;crossref;related;journal;keywords"/>
+          <entry key="autoCompleteFields" value="keywords;author;editor;entryset;related;journal;publisher;title;crossref"/>
           <entry key="autoOpenForm" value="true"/>
           <entry key="autoResizeMode" value="true"/>
           <entry key="autoSyncSpecialFieldsToKeywords" value="true"/>
@@ -36,7 +36,7 @@
           <entry key="columnInSortOrder" value=""/>
           <entry key="columnInSortOrderType" value=""/>
           <entry key="columnNames" value="groups;linked_id;field:entrytype;field:author/editor;field:title;field:year;field:journal/booktitle;field:bibtexkey"/>
-          <entry key="columnWidths" value="28.0;28.0;75.26595636392733;474.27931131243446;775.7560683846401;40.87516185349246;10.0;10.0"/>
+          <entry key="columnWidths" value="28.0;28.0;70.6447190448078;477.0442343778895;784.101645962885;34.865628042679226;10.0;10.0"/>
           <entry key="confirmDelete" value="true"/>
           <entry key="consoleCommand" value=""/>
           <entry key="cyclePreview" value="Preview;/ieee.csl"/>
@@ -74,7 +74,7 @@
           <entry key="lastFocused" value="/home/syoh/Documents/JabRef/main.db"/>
           <entry key="localAutoSave" value="false"/>
           <entry key="mainWindowPosX" value="627.0"/>
-          <entry key="mainWindowPosY" value="475.0"/>
+          <entry key="mainWindowPosY" value="29.0"/>
           <entry key="mainWindowSizeX" value="1860.0"/>
           <entry key="mainWindowSizeY" value="1403.0"/>
           <entry key="memoryStickMode" value="true"/>
@@ -126,7 +126,7 @@
           <entry key="validateInEntryEditor" value="true"/>
           <entry key="warnAboutDuplicatesInInspection" value="true"/>
           <entry key="warnBeforeOverwritingKey" value="true"/>
-          <entry key="webSearchVisible" value="true"/>
+          <entry key="webSearchVisible" value="false"/>
           <entry key="windowMaximised" value="false"/>
           <entry key="workingDirectory" value="/home/syoh/Documents/JabRef"/>
           <entry key="xmpPrivacyFilters" value="pdf;timestamp;keywords;owner;note;review"/>
