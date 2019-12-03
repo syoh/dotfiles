@@ -68,7 +68,13 @@ echo "## launchers"
 dconf write /org/gnome/shell/favorite-apps \
     "['org.gnome.Nautilus.desktop', 'JabRef.desktop', 'piavpn.desktop', 'vivaldi-stable.desktop', 'google-chrome.desktop', 'firefox-esr.desktop', 'slack.desktop', 'org.gnome.Terminal.desktop']"
 
+echo "## zoom"
+wget https://zoom.us/client/latest/zoom_amd64.deb && \
+    sudo dpkg -i zoom_amd64.deb && \
+    sudo apt-get -y -f install && \
+    rm zoom_amd64.deb
+
 echo "## gist from commandline"
 sudo gem install gist
 
-# zoom, mathpix, caffeine, insync
+# mathpix, caffeine, insync

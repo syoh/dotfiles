@@ -127,7 +127,7 @@
           <entry key="validateInEntryEditor" value="true"/>
           <entry key="warnAboutDuplicatesInInspection" value="true"/>
           <entry key="warnBeforeOverwritingKey" value="true"/>
-          <entry key="webSearchVisible" value="false"/>
+          <entry key="webSearchVisible" value="true"/>
           <entry key="windowMaximised" value="false"/>
           <entry key="workingDirectory" value="/home/syoh/Documents/JabRef"/>
           <entry key="xmpPrivacyFilters" value="pdf;timestamp;keywords;owner;note;review"/>
