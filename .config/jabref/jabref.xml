@@ -21,7 +21,7 @@
           <entry key="autoCompFirstNameMode" value="BOTH"/>
           <entry key="autoCompLF" value="false"/>
           <entry key="autoComplete" value="false"/>
-          <entry key="autoCompleteFields" value="keywords;author;editor;entryset;related;journal;publisher;title;crossref"/>
+          <entry key="autoCompleteFields" value="author;journal;crossref;entryset;keywords;title;editor;publisher;related"/>
           <entry key="autoOpenForm" value="true"/>
           <entry key="autoResizeMode" value="true"/>
           <entry key="autoSyncSpecialFieldsToKeywords" value="true"/>
@@ -35,8 +35,8 @@
           <entry key="collectTelemetry" value="true"/>
           <entry key="columnInSortOrder" value=""/>
           <entry key="columnInSortOrderType" value=""/>
-          <entry key="columnNames" value="groups;linked_id;field:entrytype;field:author/editor;field:title;field:year;field:journal/booktitle;field:bibtexkey"/>
-          <entry key="columnWidths" value="28.0;28.0;70.6447190448078;477.0442343778895;784.101645962885;34.865628042679226;10.0;10.0"/>
+          <entry key="columnNames" value="groups;linked_id;field:file;field:entrytype;field:author/editor;field:title;field:year;field:journal/booktitle;field:bibtexkey"/>
+          <entry key="columnWidths" value="28.0;28.0;207.73691941243544;127.4964163447222;149.19814930004372;250.30912822901402;68.65813679834717;225.11556168589695;322.4856882295405"/>
           <entry key="confirmDelete" value="true"/>
           <entry key="consoleCommand" value=""/>
           <entry key="cyclePreview" value="Preview;/ieee.csl"/>
@@ -48,7 +48,7 @@
           <entry key="doNotResolveStringsFor" value="url"/>
           <entry key="emailSubject" value="References"/>
           <entry key="enforceLegalBibtexKey" value="true"/>
-          <entry key="entryEditorHeightFX" value="0.5544794188861986"/>
+          <entry key="entryEditorHeightFX" value="0.5466101694915254"/>
           <entry key="exportInOriginalOrder" value="false"/>
           <entry key="exportInSpecifiedOrder" value="false"/>
           <entry key="exportPriDescending" value="false"/>
@@ -59,6 +59,7 @@
           <entry key="exportTerSort" value="title"/>
           <entry key="extraFileColumns" value="false"/>
           <entry key="fileDirectory" value="/home/syoh/Documents/JabRef"/>
+          <entry key="fxTheme" value="Dark.css"/>
           <entry key="generateKeysBeforeSaving" value="false"/>
           <entry key="grayOutNonHits" value="true"/>
           <entry key="groupIntersectUnionViewModes" value="INTERSECTION"/>
@@ -74,9 +75,9 @@
           <entry key="lastFocused" value="/home/syoh/Documents/JabRef/main.db"/>
           <entry key="localAutoSave" value="false"/>
           <entry key="mainWindowPosX" value="627.0"/>
-          <entry key="mainWindowPosY" value="29.0"/>
-          <entry key="mainWindowSizeX" value="1860.0"/>
-          <entry key="mainWindowSizeY" value="1403.0"/>
+          <entry key="mainWindowPosY" value="250.0"/>
+          <entry key="mainWindowSizeX" value="1654.0"/>
+          <entry key="mainWindowSizeY" value="1182.0"/>
           <entry key="memoryStickMode" value="true"/>
           <entry key="nameFormatterFormats" value=""/>
           <entry key="nameFormatterNames" value=""/>
@@ -106,7 +107,7 @@
           <entry key="showAdvancedHints" value="true"/>
           <entry key="showLatexCitations" value="true"/>
           <entry key="showRecommendations" value="true"/>
-          <entry key="sidePaneWidthFX" value="0.21505376344086022"/>
+          <entry key="sidePaneWidthFX" value="0.14207980652962515"/>
           <entry key="specialFieldsEnabled" value="true"/>
           <entry key="timeStampField" value="timestamp"/>
           <entry key="timeStampFormat" value="yyyy-MM-dd"/>
