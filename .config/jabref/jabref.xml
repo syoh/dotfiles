@@ -21,7 +21,7 @@
           <entry key="autoCompFirstNameMode" value="BOTH"/>
           <entry key="autoCompLF" value="false"/>
           <entry key="autoComplete" value="false"/>
-          <entry key="autoCompleteFields" value="author;journal;crossref;entryset;keywords;title;editor;publisher;related"/>
+          <entry key="autoCompleteFields" value="title;entryset;author;keywords;publisher;editor;crossref;related;journal"/>
           <entry key="autoOpenForm" value="true"/>
           <entry key="autoResizeMode" value="true"/>
           <entry key="autoSyncSpecialFieldsToKeywords" value="true"/>
@@ -35,9 +35,9 @@
           <entry key="collectTelemetry" value="true"/>
           <entry key="columnInSortOrder" value=""/>
           <entry key="columnInSortOrderType" value=""/>
-          <entry key="columnNames" value="groups;linked_id;field:file;field:entrytype;field:author/editor;field:title;field:year;field:journal/booktitle;field:bibtexkey"/>
-          <entry key="columnWidths" value="28.0;28.0;207.73691941243544;127.4964163447222;149.19814930004372;250.30912822901402;68.65813679834717;225.11556168589695;322.4856882295405"/>
-          <entry key="confirmDelete" value="true"/>
+          <entry key="columnNames" value="groups;linked_id;field:entrytype;field:author/editor;field:title;field:year;field:journal/booktitle;field:bibtexkey"/>
+          <entry key="columnWidths" value="28.0;28.0;131.1329674140838;164.7730288545771;482.0680645743849;86.60226145742887;224.2347075692867;441.1368434098397"/>
+          <entry key="confirmDelete" value="false"/>
           <entry key="consoleCommand" value=""/>
           <entry key="cyclePreview" value="Preview;/ieee.csl"/>
           <entry key="cyclePreviewPos" value="0"/>
@@ -48,7 +48,7 @@
           <entry key="doNotResolveStringsFor" value="url"/>
           <entry key="emailSubject" value="References"/>
           <entry key="enforceLegalBibtexKey" value="true"/>
-          <entry key="entryEditorHeightFX" value="0.5466101694915254"/>
+          <entry key="entryEditorHeightFX" value="0.5552865213882163"/>
           <entry key="exportInOriginalOrder" value="false"/>
           <entry key="exportInSpecifiedOrder" value="false"/>
           <entry key="exportPriDescending" value="false"/>
@@ -59,7 +59,6 @@
           <entry key="exportTerSort" value="title"/>
           <entry key="extraFileColumns" value="false"/>
           <entry key="fileDirectory" value="/home/syoh/Documents/JabRef"/>
-          <entry key="fxTheme" value="Dark.css"/>
           <entry key="generateKeysBeforeSaving" value="false"/>
           <entry key="grayOutNonHits" value="true"/>
           <entry key="groupIntersectUnionViewModes" value="INTERSECTION"/>
@@ -74,11 +73,12 @@
           <entry key="lastEdited" value="/home/syoh/Documents/JabRef/main.db"/>
           <entry key="lastFocused" value="/home/syoh/Documents/JabRef/main.db"/>
           <entry key="localAutoSave" value="false"/>
-          <entry key="mainWindowPosX" value="627.0"/>
-          <entry key="mainWindowPosY" value="250.0"/>
-          <entry key="mainWindowSizeX" value="1654.0"/>
-          <entry key="mainWindowSizeY" value="1182.0"/>
+          <entry key="mainWindowPosX" value="1021.0"/>
+          <entry key="mainWindowPosY" value="308.0"/>
+          <entry key="mainWindowSizeX" value="2011.0"/>
+          <entry key="mainWindowSizeY" value="1403.0"/>
           <entry key="memoryStickMode" value="true"/>
+          <entry key="mergeEntriesDiffMode" value="WORD"/>
           <entry key="nameFormatterFormats" value=""/>
           <entry key="nameFormatterNames" value=""/>
           <entry key="namesAsIs" value="false"/>
@@ -107,7 +107,7 @@
           <entry key="showAdvancedHints" value="true"/>
           <entry key="showLatexCitations" value="true"/>
           <entry key="showRecommendations" value="true"/>
-          <entry key="sidePaneWidthFX" value="0.14207980652962515"/>
+          <entry key="sidePaneWidthFX" value="0.19890601690701143"/>
           <entry key="specialFieldsEnabled" value="true"/>
           <entry key="timeStampField" value="timestamp"/>
           <entry key="timeStampFormat" value="yyyy-MM-dd"/>
@@ -127,7 +127,7 @@
           <entry key="validateInEntryEditor" value="true"/>
           <entry key="warnAboutDuplicatesInInspection" value="true"/>
           <entry key="warnBeforeOverwritingKey" value="true"/>
-          <entry key="webSearchVisible" value="true"/>
+          <entry key="webSearchVisible" value="false"/>
           <entry key="windowMaximised" value="false"/>
           <entry key="workingDirectory" value="/home/syoh/Documents/JabRef"/>
           <entry key="xmpPrivacyFilters" value="pdf;timestamp;keywords;owner;note;review"/>
