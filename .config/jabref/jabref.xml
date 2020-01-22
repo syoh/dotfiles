@@ -21,22 +21,22 @@
           <entry key="autoCompFirstNameMode" value="BOTH"/>
           <entry key="autoCompLF" value="false"/>
           <entry key="autoComplete" value="false"/>
-          <entry key="autoCompleteFields" value="title;entryset;author;keywords;publisher;editor;crossref;related;journal"/>
+          <entry key="autoCompleteFields" value="entryset;related;author;journal;keywords;publisher;title;crossref;editor"/>
           <entry key="autoOpenForm" value="true"/>
           <entry key="autoResizeMode" value="true"/>
           <entry key="autoSyncSpecialFieldsToKeywords" value="true"/>
           <entry key="autolinkExactKeyOnly" value="false"/>
           <entry key="avoidOverwritingKey" value="false"/>
           <entry key="backup" value="true"/>
-          <entry key="bibLocAsPrimaryDir" value="false"/>
+          <entry key="bibLocAsPrimaryDir" value="true"/>
           <entry key="biblatexMode" value="false"/>
           <entry key="bindings" value=""/>
           <entry key="citeCommand" value="\cite"/>
           <entry key="collectTelemetry" value="true"/>
-          <entry key="columnInSortOrder" value=""/>
-          <entry key="columnInSortOrderType" value=""/>
+          <entry key="columnInSortOrder" value="field:author/editor"/>
+          <entry key="columnInSortOrderType" value="DESCENDING"/>
           <entry key="columnNames" value="groups;linked_id;field:entrytype;field:author/editor;field:title;field:year;field:journal/booktitle;field:bibtexkey"/>
-          <entry key="columnWidths" value="28.0;28.0;131.1329674140838;164.7730288545771;482.0680645743849;86.60226145742887;224.2347075692867;441.1368434098397"/>
+          <entry key="columnWidths" value="28.0;28.0;141.95570367753268;184.00156880290345;453.5806386843269;86.29789639608417;256.72634353342175;137.43784890573093"/>
           <entry key="confirmDelete" value="false"/>
           <entry key="consoleCommand" value=""/>
           <entry key="cyclePreview" value="Preview;/ieee.csl"/>
@@ -48,7 +48,7 @@
           <entry key="doNotResolveStringsFor" value="url"/>
           <entry key="emailSubject" value="References"/>
           <entry key="enforceLegalBibtexKey" value="true"/>
-          <entry key="entryEditorHeightFX" value="0.5552865213882163"/>
+          <entry key="entryEditorHeightFX" value="0.5316253002401922"/>
           <entry key="exportInOriginalOrder" value="false"/>
           <entry key="exportInSpecifiedOrder" value="false"/>
           <entry key="exportPriDescending" value="false"/>
@@ -58,7 +58,8 @@
           <entry key="exportTerDescending" value="true"/>
           <entry key="exportTerSort" value="title"/>
           <entry key="extraFileColumns" value="false"/>
-          <entry key="fileDirectory" value="/home/syoh/Documents/JabRef"/>
+          <entry key="fileDirectory" value="/home/syoh/syoh@ucsb.edu/resources/JabRef"/>
+          <entry key="fxTheme" value="Dark.css"/>
           <entry key="generateKeysBeforeSaving" value="false"/>
           <entry key="grayOutNonHits" value="true"/>
           <entry key="groupIntersectUnionViewModes" value="INTERSECTION"/>
@@ -70,13 +71,13 @@
           <entry key="importFileNamePattern" value="[bibtexkey] - [title]"/>
           <entry key="keyGenAlwaysAddLetter" value="false"/>
           <entry key="keyGenFirstLetterA" value="true"/>
-          <entry key="lastEdited" value="/home/syoh/Documents/JabRef/main.db"/>
-          <entry key="lastFocused" value="/home/syoh/Documents/JabRef/main.db"/>
+          <entry key="lastEdited" value="/home/syoh/syoh@ucsb.edu/resources/JabRef/main.bib"/>
+          <entry key="lastFocused" value="/home/syoh/syoh@ucsb.edu/resources/JabRef/main.bib"/>
           <entry key="localAutoSave" value="false"/>
-          <entry key="mainWindowPosX" value="1021.0"/>
-          <entry key="mainWindowPosY" value="308.0"/>
-          <entry key="mainWindowSizeX" value="2011.0"/>
-          <entry key="mainWindowSizeY" value="1403.0"/>
+          <entry key="mainWindowPosX" value="0.0"/>
+          <entry key="mainWindowPosY" value="1467.0"/>
+          <entry key="mainWindowSizeX" value="1720.0"/>
+          <entry key="mainWindowSizeY" value="1413.0"/>
           <entry key="memoryStickMode" value="true"/>
           <entry key="mergeEntriesDiffMode" value="WORD"/>
           <entry key="nameFormatterFormats" value=""/>
@@ -97,7 +98,7 @@
           <entry key="proxyPassword" value=""/>
           <entry key="proxyPort" value="80"/>
           <entry key="proxyUsername" value=""/>
-          <entry key="recentDatabases" value="/home/syoh/Documents/JabRef/main.db"/>
+          <entry key="recentDatabases" value="/home/syoh/syoh@ucsb.edu/resources/JabRef/main.bib;/home/syoh/Documents/JabRef/main.db"/>
           <entry key="reformatFileOnSaveAndExport" value="false"/>
           <entry key="remoteServerPort" value="6050"/>
           <entry key="resolveStringsAllFields" value="false"/>
@@ -107,7 +108,7 @@
           <entry key="showAdvancedHints" value="true"/>
           <entry key="showLatexCitations" value="true"/>
           <entry key="showRecommendations" value="true"/>
-          <entry key="sidePaneWidthFX" value="0.19890601690701143"/>
+          <entry key="sidePaneWidthFX" value="0.23255813953488372"/>
           <entry key="specialFieldsEnabled" value="true"/>
           <entry key="timeStampField" value="timestamp"/>
           <entry key="timeStampFormat" value="yyyy-MM-dd"/>
@@ -129,7 +130,7 @@
           <entry key="warnBeforeOverwritingKey" value="true"/>
           <entry key="webSearchVisible" value="false"/>
           <entry key="windowMaximised" value="false"/>
-          <entry key="workingDirectory" value="/home/syoh/Documents/JabRef"/>
+          <entry key="workingDirectory" value="/home/syoh/syoh@ucsb.edu/resources/JabRef"/>
           <entry key="xmpPrivacyFilters" value="pdf;timestamp;keywords;owner;note;review"/>
         </map>
         <node name="bibtexkeypatterns">
