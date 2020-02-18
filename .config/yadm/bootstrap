@@ -5,7 +5,7 @@ dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']
 
 sudo apt-get update 
 
-sudo apt-get -y install neovim wget curl zathura openssh-server pdftk
+sudo apt-get -y install neovim wget curl zathura openssh-server pdftk texlive-full
 
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 
@@ -78,3 +78,13 @@ echo "## gist from commandline"
 sudo gem install gist
 
 # mathpix, caffeine, insync
+
+echo "## install jekyll"
+sudo gem install ruby bundler
+sudo apt-get install ruby-dev zlib1g-dev
+mkdir tmp-jekyll && cd tmp-jekyll
+cat <<- EOF > Gemfile
+    gem 'github-pages'
+    source 'https://rubygems.org'
+EOF
+bundle install && cd ../ && rm -rf tmp-jekyll
