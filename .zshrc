@@ -128,7 +128,10 @@ rmpage1func() {
 alias rmpage1=rmpage1func   # remove first page of pdf file
 
 alias yacp="yadm add -u && yadm commit && yadm push"
+alias ycp="yadm commit && yadm push"
+
 alias gacp="git add -u && git commit && git push"
+alias gcp="git commit && git push"
 
 # keyboard bindings
 bindkey "jk" vi-cmd-mode
