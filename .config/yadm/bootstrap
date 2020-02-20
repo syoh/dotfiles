@@ -1,11 +1,27 @@
 #!/bin/bash
 
+## common settings
+sudo apt-get update
+
+echo "## github"
+git config --global user.email "syoh@ucsb.edu" && \
+    git config --global user.name "Sang-Yun Oh" && \
+    git config --global credential.helper cache
+
+echo "## zsh"
+sudo apt-get install -y zsh powerline fonts-powerline && \
+    RUNZSH=no CHSH=no sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" && \
+    test -f ~/.zshrc.pre-oh-my-zsh && \
+    mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc  && \
+    chsh -s $(which zsh)
+
+sudo apt-get install -y neovim wget curl pdftk 
+## common settings
+
 # https://www.devdungeon.com/content/rebind-caps-lock-key-escapecontrol
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
 
-sudo apt-get update 
-
-sudo apt-get -y install neovim wget curl zathura openssh-server pdftk texlive-full
+sudo apt-get -y install zathura openssh-server texlive-full
 
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 
@@ -15,13 +31,6 @@ sudo apt-get -y install tlp tlp-rdw
 echo "## docker"
 sudo apt-get -y install docker.io docker-compose && \
 	sudo usermod -aG docker $USER
-
-echo "## zsh"
-sudo apt install -y zsh powerline fonts-powerline && \
-    RUNZSH=no CHSH=no sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" && \
-    test -f ~/.zshrc.pre-oh-my-zsh && \
-    mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc && \
-    chsh -s $(which zsh)
 
 echo "## chrome browser"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
