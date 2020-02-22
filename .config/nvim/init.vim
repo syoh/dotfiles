@@ -66,7 +66,7 @@ cabbrev h vert bo h
 " change current directory to buffer directory
 autocmd BufEnter * silent! lcd %:p:h
 
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
@@ -154,6 +154,12 @@ let g:email = "syoh@pstat.ucsb.edu"
 let g:templates_no_autocmd = 1
 let g:templates_no_builtin_templates = 1
 let g:templates_directory = "/home/syoh/Dropbox/sync/templates-vim"
+
+
+""""""""""""""""""""
+"" vim-markdown
+autocmd FileType pandoc set conceallevel=0
+autocmd FileType pandoc normal zR
 
 
 "" yaml files
