@@ -36,7 +36,7 @@
           <entry key="columnInSortOrder" value="field:author/editor"/>
           <entry key="columnInSortOrderType" value="DESCENDING"/>
           <entry key="columnNames" value="groups;linked_id;field:entrytype;field:author/editor;field:title;field:year;field:journal/booktitle;field:bibtexkey"/>
-          <entry key="columnWidths" value="28.0;28.0;141.95570367753268;184.00156880290345;453.5806386843269;86.29789639608417;256.72634353342175;137.43784890573093"/>
+          <entry key="columnWidths" value="28.0;28.0;139.2412418729316;185.12218062855095;479.2900080271872;78.50679296724549;264.48030360872815;128.2718550450468"/>
           <entry key="confirmDelete" value="false"/>
           <entry key="consoleCommand" value=""/>
           <entry key="cyclePreview" value="Preview;/ieee.csl"/>
@@ -48,7 +48,7 @@
           <entry key="doNotResolveStringsFor" value="url"/>
           <entry key="emailSubject" value="References"/>
           <entry key="enforceLegalBibtexKey" value="true"/>
-          <entry key="entryEditorHeightFX" value="0.5316253002401922"/>
+          <entry key="entryEditorHeightFX" value="0.5300240192153723"/>
           <entry key="exportInOriginalOrder" value="false"/>
           <entry key="exportInSpecifiedOrder" value="false"/>
           <entry key="exportPriDescending" value="false"/>

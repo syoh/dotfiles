@@ -21,7 +21,9 @@ sudo apt-get install -y neovim wget curl pdftk
 # https://www.devdungeon.com/content/rebind-caps-lock-key-escapecontrol
 dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
 
-sudo apt-get -y install zathura openssh-server texlive-full
+sudo apt-get update 
+
+sudo apt-get -y install neovim wget curl zathura openssh-server pdftk peek texlive-full
 
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 
