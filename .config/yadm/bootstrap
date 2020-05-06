@@ -29,7 +29,8 @@ echo "#### Install general stuff"
         neovim \
         wget \
         curl \
-        pdftk
+        pdftk \
+        less
 
 if [ "$ISSUDOER" = true ] && [ "$ISWSL" = true ] && [ "$ISGUI" = false ]
 then
@@ -159,14 +160,37 @@ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O ~/an
 ##     bash ~/miniconda.sh -b -p "$HOME/.anaconda3" && \
 ##     rm ~/miniconda.sh
 
+echo "#### Mostly OS GUI stuff (not for WSL)"
+if [ "$ISJOVYAN" = true ]
+then
+
+    mkdir -p $(jupyter --data-dir)/nbextensions && \
+        cd $(jupyter --data-dir)/nbextensions && \
+        git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding && \
+        jupyter nbextension enable vim_binding/vim_binding
+
+    ## Jupyter Classic Notebook Extensions
+    jupyter nbextensions_configurator enable --sys-prefix && \
+        jupyter nbextension enable vim_binding/vim_binding --sys-prefix
+
+    export RISE_DIR=${HOME}/.local/share/jupyter/nbextensions/rise/reveal.js/css/theme
+    pip install --pre rise && \
+        jupyter nbextension install rise --py --user && \
+        jupyter nbextension enable rise --py --user && \
+        sed -i 's/^\.reveal a/body.notebook_app.rise-enabled .reveal a/g' ${RISE_DIR}/*.css
+
+    pip install hide_code && \
+        jupyter nbextension install --py hide_code --sys-prefix && \
+        jupyter nbextension enable --py hide_code --sys-prefix && \
+        jupyter serverextension enable --py hide_code --sys-prefix
+
+    ## Jupyter Lab Extensions
+    jupyter labextension enable jupyterlab_vim
+
+fi
+
 exit
 
-## 
-## 
-## echo "## thefuck"
-## sudo apt-get -y install python3-dev python3-pip python3-setuptools
-## sudo pip3 install thefuck
-## 
 ## echo "## gnome terminal settings"
 ## # https://dimitar.me/how-to-export-import-gnome-terminal-profiles/
 ## # https://gist.github.com/reavon/0bbe99150810baa5623e5f601aa93afc
