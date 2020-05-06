@@ -1,101 +1,188 @@
 #!/bin/bash
 
-## common settings
-sudo apt-get update
+OSNAME=$(grep '^ID=' /etc/os-release | cut -d'=' -f2)
+USERNAME=$(echo $HOME | cut -d"/" -f3)
 
-echo "## github"
+[[ $(echo $USERNAME | grep -c jovyan) != 0 ]] && ISJOVYAN=true || ISJOVYAN=false
+[[ $(groups | grep -c sudo) != 0 ]]           && ISSUDOER=true || ISSUDOER=false
+[[ $WSL_DISTRO_NAME ]]                        && ISWSL=true    || ISWSL=false
+[[ $(command -v gnome-terminal) ]]            && ISGUI=true    || ISGUI=false
+
+## [[ "$OSNAME" == "debian" ]]                   && ISDEBIAN=true || ISDEBIAN=false
+## [[ "$OSNAME" == "ubuntu" ]]                   && ISUBUNTU=true || ISUBUNTU=false
+
+echo "####"
+echo "OSNAME  : $OSNAME"
+echo "USERNAME: $USERNAME"
+echo "ISJOVYAN: $ISJOVYAN"
+echo "ISSUDOER: $ISSUDOER"
+echo "ISWSL   : $ISWSL"
+echo "ISGUI   : $ISGUI"
+echo "####"
+
+echo "#### Install general stuff"
+[ "$ISSUDOER" = true ] && \
+    sudo apt-get update && \
+    sudo apt-get install -y \
+        zsh \
+        git \
+        neovim \
+        wget \
+        curl \
+        pdftk
+
+if [ "$ISSUDOER" = true ] && [ "$ISWSL" = true ] && [ "$ISGUI" = false ]
+then
+
+    echo "#### Install GUI"
+    while true; do
+        read -p "In WSL environment but there is no gnome-terminal. Install it? " yn
+        case $yn in
+            [Yy]* ) 
+                sudo apt-get install -y gnome-terminal dbus-x11
+                break
+                ;;
+            [Nn]* )
+                echo "No gnome-terminal (probably no GUI)"
+                break
+                ;;
+            * ) 
+                echo "Please answer yes or no. "
+                ;;
+        esac
+    done
+
+fi
+
+echo "#### Mostly OS GUI stuff (not for WSL)"
+if [ "$ISWSL" = false ] && [ "$ISJOVYAN" = false ]
+then
+
+    if [ "$ISSUDOER" = true ]
+    then
+
+        echo "##### install all the GUI stuff"
+
+        sudo apt-get install -y 
+            zathura \
+            peek \
+            powerline \
+            fonts-powerline \
+            fonts-noto
+
+        echo "## chrome"
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+            sudo dpkg -i google-chrome-stable_current_amd64.deb && \
+            sudo apt-get -y -f install && \
+            rm google-chrome-stable_current_amd64.deb
+
+        echo "#### laptop power settings"
+        sudo apt-get -y install tlp tlp-rdw
+
+        echo "#### docker"
+        sudo apt-get -y install docker.io docker-compose && \
+            sudo usermod -aG docker $USER
+
+        echo "#### slack"
+        wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.1.2-amd64.deb && \
+            sudo dpkg -i slack-desktop-4.1.2-amd64.deb && \
+            sudo apt-get -y -f install && \
+            rm slack-desktop-4.1.2-amd64.deb
+
+        echo "#### PIA VPN"
+        wget https://installers.privateinternetaccess.com/download/pia-linux-1.6-03756.run && \
+            sh pia-linux-1.6-03756.run && \
+            sudo apt-get -y install network-manager-openvpn* && \
+            rm pia-linux-1.6-03756.run 
+
+        echo "#### JabRef"
+        wget https://builds.jabref.org/master/JabRef-portable_linux.tar.gz && \
+            sudo tar xvzf JabRef-portable_linux.tar.gz -C /usr/local/share && \
+            sudo ln -s /usr/local/share/JabRef/bin/JabRef  /usr/local/bin/JabRef && \
+            rm JabRef-portable_linux.tar.gz && \
+            sudo ln -sf "$HOME/.local/share/applications/JabRef.desktop" /usr/share/applications/.
+
+        echo "#### vivaldi"
+        wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add - && \
+            sudo add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main' && \
+            sudo apt update && sudo apt install vivaldi-stable
+
+        echo "#### zoom"
+        wget https://zoom.us/client/latest/zoom_amd64.deb && \
+            sudo dpkg -i zoom_amd64.deb && \
+            sudo apt-get -y -f install && \
+            rm zoom_amd64.deb
+
+
+        echo "#### remove stuff"
+        sudo apt-get purge --auto-remove evolution thunderbird libreoffice-core
+
+    fi
+
+    dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
+    xdg-mime default org.pwmt.zathura.desktop application/pdf
+    dconf write /org/gnome/shell/favorite-apps \
+        "['org.gnome.Nautilus.desktop', 'JabRef.desktop', 'piavpn.desktop', 'vivaldi-stable.desktop', 'google-chrome.desktop', 'firefox-esr.desktop', 'slack.desktop', 'org.gnome.Terminal.desktop']"
+
+fi
+
+echo "#### github"
 git config --global user.email "syoh@ucsb.edu" && \
     git config --global user.name "Sang-Yun Oh" && \
     git config --global credential.helper cache
 
-echo "## zsh"
-sudo apt-get install -y zsh powerline fonts-powerline && \
+if [ $(command -v zsh) ]
+then
+
+    echo "#### zsh configuration"
     RUNZSH=no CHSH=no sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" && \
-    test -f ~/.zshrc.pre-oh-my-zsh && \
-    mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc  && \
-    chsh -s $(which zsh)
+        test -f ~/.zshrc.pre-oh-my-zsh && \
+        mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 
-sudo apt-get install -y neovim wget curl pdftk 
-## common settings
+    if [ "$ISJOVYAN" = true ]
+    then
+        echo 'add to .bashrc to start zsh'
+    else
+        chsh -s $(which zsh)
+    fi
 
-# https://www.devdungeon.com/content/rebind-caps-lock-key-escapecontrol
-dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:ctrl_modifier']"
+fi
 
-sudo apt-get update 
 
-sudo apt-get -y install neovim wget curl zathura openssh-server pdftk peek texlive-full
+echo "#### anaconda"
+wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O ~/anaconda.sh && \
+    bash ~/anaconda.sh -b -p "$HOME/.anaconda3" && \
+    rm ~/anaconda.sh
 
-xdg-mime default org.pwmt.zathura.desktop application/pdf
+## echo "#### miniconda"
+## wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
+##     bash ~/miniconda.sh -b -p "$HOME/.anaconda3" && \
+##     rm ~/miniconda.sh
 
-echo "## laptop power settings"
-sudo apt-get -y install tlp tlp-rdw
+exit
 
-echo "## docker"
-sudo apt-get -y install docker.io docker-compose && \
-	sudo usermod -aG docker $USER
-
-echo "## chrome browser"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt-get -y -f install && \
-    rm google-chrome-stable_current_amd64.deb
-
-echo "## remove stuff"
-sudo apt-get purge --auto-remove evolution thunderbird libreoffice-core
-
-echo "## thefuck"
-sudo apt-get -y install python3-dev python3-pip python3-setuptools
-sudo pip3 install thefuck
-
-echo "## gnome terminal settings"
-# https://dimitar.me/how-to-export-import-gnome-terminal-profiles/
-# https://gist.github.com/reavon/0bbe99150810baa5623e5f601aa93afc
-
-echo "## slack"
-wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.1.2-amd64.deb && \
-	sudo dpkg -i slack-desktop-4.1.2-amd64.deb && \
-    sudo apt-get -y -f install && \
-	rm slack-desktop-4.1.2-amd64.deb
-
-echo "## PIA and VPN"
-wget https://installers.privateinternetaccess.com/download/pia-linux-1.6-03756.run && \
-    sh pia-linux-1.6-03756.run && \
-    sudo apt-get -y install network-manager-openvpn* && \
-    rm pia-linux-1.6-03756.run 
-
-echo "## JabRef"
-wget https://builds.jabref.org/master/JabRef-portable_linux.tar.gz && \
-    sudo tar xvzf JabRef-portable_linux.tar.gz -C /usr/local/share && \
-    sudo ln -s /usr/local/share/JabRef/bin/JabRef  /usr/local/bin/JabRef && \
-    rm JabRef-portable_linux.tar.gz && \
-    sudo ln -sf "$HOME/.local/share/applications/JabRef.desktop" /usr/share/applications/.
-
-echo "## vivaldi"
-wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | sudo apt-key add - && \
-    sudo add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main' && \
-    sudo apt update && sudo apt install vivaldi-stable
-
-echo "## launchers"
-dconf write /org/gnome/shell/favorite-apps \
-    "['org.gnome.Nautilus.desktop', 'JabRef.desktop', 'piavpn.desktop', 'vivaldi-stable.desktop', 'google-chrome.desktop', 'firefox-esr.desktop', 'slack.desktop', 'org.gnome.Terminal.desktop']"
-
-echo "## zoom"
-wget https://zoom.us/client/latest/zoom_amd64.deb && \
-    sudo dpkg -i zoom_amd64.deb && \
-    sudo apt-get -y -f install && \
-    rm zoom_amd64.deb
-
-echo "## gist from commandline"
-sudo gem install gist
-
-# mathpix, caffeine, insync
-
-echo "## install jekyll"
-sudo gem install ruby bundler
-sudo apt-get install ruby-dev zlib1g-dev
-mkdir tmp-jekyll && cd tmp-jekyll
-cat <<- EOF > Gemfile
-    gem 'github-pages'
-    source 'https://rubygems.org'
-EOF
-bundle install && cd ../ && rm -rf tmp-jekyll
+## 
+## 
+## echo "## thefuck"
+## sudo apt-get -y install python3-dev python3-pip python3-setuptools
+## sudo pip3 install thefuck
+## 
+## echo "## gnome terminal settings"
+## # https://dimitar.me/how-to-export-import-gnome-terminal-profiles/
+## # https://gist.github.com/reavon/0bbe99150810baa5623e5f601aa93afc
+## 
+## 
+## echo "## gist from commandline"
+## sudo gem install gist
+## 
+## # mathpix, caffeine, insync
+## 
+## echo "## install jekyll"
+## sudo gem install ruby bundler
+## sudo apt-get install ruby-dev zlib1g-dev
+## mkdir tmp-jekyll && cd tmp-jekyll
+## cat <<- EOF > Gemfile
+##     gem 'github-pages'
+##     source 'https://rubygems.org'
+## EOF
+## bundle install && cd ../ && rm -rf tmp-jekyll

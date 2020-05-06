@@ -136,6 +136,12 @@ alias gcp="git commit && git push"
 # keyboard bindings
 bindkey "jk" vi-cmd-mode
 
+# DISPLAY to host xserver on WSL
+if [ $WSL_DISTRO_NAME ]
+then
+    export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
+fi
+
 # added by travis gem
 [ -f /home/syoh/.travis/travis.sh ] && source /home/syoh/.travis/travis.sh
 
