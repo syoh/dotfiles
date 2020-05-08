@@ -52,6 +52,18 @@ then
                 ;;
         esac
     done
+    
+    [[ $(command -v gnome-terminal) ]] && ISGUI=true || ISGUI=false
+
+fi
+
+if [ "$ISGUI" = true ] && [ "$ISSUDOER" = true ]
+then
+
+    sudo apt-get install -y 
+        powerline \
+        fonts-powerline \
+        fonts-noto
 
 fi
 
@@ -66,10 +78,7 @@ then
 
         sudo apt-get install -y 
             zathura \
-            peek \
-            powerline \
-            fonts-powerline \
-            fonts-noto
+            peek
 
         echo "## chrome"
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
