@@ -140,6 +140,7 @@ bindkey "jk" vi-cmd-mode
 if [ $WSL_DISTRO_NAME ]
 then
     export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
+    export LIBGL_ALWAYS_INDIRECT=1
 fi
 
 # added by travis gem

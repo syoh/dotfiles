@@ -136,11 +136,11 @@ then
 
 fi
 
-echo "#### github"
-git config --global user.email "syoh@ucsb.edu" && \
-    git config --global user.name "Sang-Yun Oh" && \
-    git config --global credential.helper cache
-
+## echo "#### github"
+## git config --global user.email "syoh@ucsb.edu" && \
+##     git config --global user.name "Sang-Yun Oh" && \
+##     git config --global credential.helper cache
+## 
 if [ $(command -v zsh) ]
 then
 
@@ -159,10 +159,10 @@ then
 fi
 
 
-echo "#### anaconda"
-wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O ~/anaconda.sh && \
-    bash ~/anaconda.sh -b -p "$HOME/.anaconda3" && \
-    rm ~/anaconda.sh
+## echo "#### anaconda"
+## wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O ~/anaconda.sh && \
+##     bash ~/anaconda.sh -b -p "$HOME/.anaconda3" && \
+##     rm ~/anaconda.sh
 
 ## echo "#### miniconda"
 ## wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
