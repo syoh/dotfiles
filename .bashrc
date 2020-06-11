@@ -117,18 +117,18 @@ if ! shopt -oq posix; then
 fi
 
 # added by travis gem
-[ -f /home/syoh/.travis/travis.sh ] && source /home/syoh/.travis/travis.sh
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/syoh/.anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('~/.anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/syoh/.anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/syoh/.anaconda3/etc/profile.d/conda.sh"
+    if [ -f "~/.anaconda3/etc/profile.d/conda.sh" ]; then
+        . "~/.anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/syoh/.anaconda3/bin:$PATH"
+        export PATH="~/.anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup

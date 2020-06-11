@@ -3,10 +3,11 @@
 OSNAME=$(grep '^ID=' /etc/os-release | cut -d'=' -f2)
 USERNAME=$(echo $HOME | cut -d"/" -f3)
 
-[[ $(echo $USERNAME | grep -c jovyan) != 0 ]] && ISJOVYAN=true || ISJOVYAN=false
-[[ $(groups | grep -c sudo) != 0 ]]           && ISSUDOER=true || ISSUDOER=false
-[[ $WSL_DISTRO_NAME ]]                        && ISWSL=true    || ISWSL=false
-[[ $(command -v gnome-terminal) ]]            && ISGUI=true    || ISGUI=false
+[[ $(echo $USERNAME | grep -c jovyan) != 0 ]]   && ISJOVYAN=true || ISJOVYAN=false
+[[ $(groups | grep -c sudo) != 0 ]]             && ISSUDOER=true || ISSUDOER=false
+[[ "$GRANT_SUDO" = yes && "$ISJOVYAN" = true ]] && ISSUDOER=true || ISSUDOER=false
+[[ $WSL_DISTRO_NAME ]]                          && ISWSL=true    || ISWSL=false
+[[ $(command -v gnome-terminal) ]]              && ISGUI=true    || ISGUI=false
 
 ## [[ "$OSNAME" == "debian" ]]                   && ISDEBIAN=true || ISDEBIAN=false
 ## [[ "$OSNAME" == "ubuntu" ]]                   && ISUBUNTU=true || ISUBUNTU=false
@@ -29,8 +30,8 @@ echo "#### Install general stuff"
         neovim \
         wget \
         curl \
-        pdftk \
         less
+        # pdftk \
 
 if [ "$ISSUDOER" = true ] && [ "$ISWSL" = true ] && [ "$ISGUI" = false ]
 then
@@ -174,6 +175,7 @@ then
     if [ "$ISJOVYAN" = true ]
     then
         echo 'add to .bashrc to start zsh'
+        echo 'test -f /usr/bin/zsh && /usr/bin/zsh' >> ~/.profile
     else
         chsh -s $(which zsh)
     fi
