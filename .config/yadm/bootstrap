@@ -9,9 +9,6 @@ USERNAME=$(echo $HOME | cut -d"/" -f3)
 [[ $WSL_DISTRO_NAME ]]                          && ISWSL=true    || ISWSL=false
 [[ $(command -v gnome-terminal) ]]              && ISGUI=true    || ISGUI=false
 
-## [[ "$OSNAME" == "debian" ]]                   && ISDEBIAN=true || ISDEBIAN=false
-## [[ "$OSNAME" == "ubuntu" ]]                   && ISUBUNTU=true || ISUBUNTU=false
-
 echo "####"
 echo "OSNAME  : $OSNAME"
 echo "USERNAME: $USERNAME"
@@ -32,6 +29,84 @@ echo "#### Install general stuff"
         curl \
         less
         # pdftk \
+
+if [ $(command -v zsh) ]
+then
+
+    echo "#### zsh configuration"
+    RUNZSH=no CHSH=no sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" && \
+        test -f ~/.zshrc.pre-oh-my-zsh && \
+        mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+
+    if [ "$ISJOVYAN" = true ]
+    then
+        echo '#### add to .bashrc to start zsh'
+        echo 'test -f /usr/bin/zsh && /usr/bin/zsh' >> ~/.profile
+    else
+        chsh -s $(which zsh)
+    fi
+
+fi
+
+echo "#### Native OS stuff"
+if [ "$ISJOVYAN" = false ]
+then
+
+    echo "#### anaconda"
+    which pip || test -d $HOME/.anaconda3 || \
+        wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O $HOME/anaconda.sh && \
+        bash $HOME/anaconda.sh -b -p "$HOME/.anaconda3" && \
+        rm $HOME/anaconda.sh && \
+		conda init
+
+    if [ "$ISSUDOER" = true ]
+    then
+
+        echo "#### docker"
+        sudo apt-get -y install docker.io docker-compose && \
+            sudo usermod -aG docker $USER
+
+        echo "#### ruby and travis"
+        # /home/syoh/.gem/ruby/2.5.0/bin
+        sudo apt-get install ruby ruby-dev && \
+            gem install travis --user-install --no-document
+
+        if which ruby >/dev/null && which gem >/dev/null; then
+			PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+		fi
+
+    fi
+fi
+
+
+echo "#### Jupyter notebook extensions"
+if [ "$ISJOVYAN" = true ]
+then
+
+    mkdir -p $(jupyter --data-dir)/nbextensions && \
+        cd $(jupyter --data-dir)/nbextensions && \
+        git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding && \
+        jupyter nbextension enable vim_binding/vim_binding
+
+    ## Jupyter Classic Notebook Extensions
+    jupyter nbextensions_configurator enable --sys-prefix && \
+        jupyter nbextension enable vim_binding/vim_binding --sys-prefix
+
+    export RISE_DIR=${HOME}/.local/share/jupyter/nbextensions/rise/reveal.js/css/theme
+    pip install --pre rise && \
+        jupyter nbextension install rise --py --user && \
+        jupyter nbextension enable rise --py --user && \
+        sed -i 's/^\.reveal a/body.notebook_app.rise-enabled .reveal a/g' ${RISE_DIR}/*.css
+
+    pip install hide_code && \
+        jupyter nbextension install --py hide_code --sys-prefix && \
+        jupyter nbextension enable --py hide_code --sys-prefix && \
+        jupyter serverextension enable --py hide_code --sys-prefix
+
+    ## Jupyter Lab Extensions
+    jupyter labextension enable jupyterlab_vim
+
+fi
 
 if [ "$ISSUDOER" = true ] && [ "$ISWSL" = true ] && [ "$ISGUI" = false ]
 then
@@ -67,32 +142,6 @@ then
         fonts-noto
 
 fi
-
-echo "#### non-jupyter stuff"
-if [ "$ISJOVYAN" = false ]
-then
-
-    echo "#### anaconda"
-    which pip || test -d $HOME/.anaconda3 || \
-        wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O $HOME/anaconda.sh && \
-        bash $HOME/anaconda.sh -b -p "$HOME/.anaconda3" && \
-        rm $HOME/anaconda.sh
-
-    if [ "$ISSUDOER" = true ]
-    then
-
-        echo "#### docker"
-        sudo apt-get -y install docker.io docker-compose && \
-            sudo usermod -aG docker $USER
-
-        echo "#### ruby and travis"
-        # /home/syoh/.gem/ruby/2.5.0/bin
-        sudo apt-get install ruby ruby-dev build-essentials && \
-            gem install travis --user-install --no-document
-
-    fi
-fi
-
 
 echo "#### Mostly OS GUI stuff (not for WSL)"
 if [ "$ISWSL" = false ] && [ "$ISJOVYAN" = false ]
@@ -159,82 +208,6 @@ then
 
 fi
 
-## echo "#### github"
-## git config --global user.email "syoh@ucsb.edu" && \
-##     git config --global user.name "Sang-Yun Oh" && \
-##     git config --global credential.helper cache
-## 
-if [ $(command -v zsh) ]
-then
-
-    echo "#### zsh configuration"
-    RUNZSH=no CHSH=no sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" && \
-        test -f ~/.zshrc.pre-oh-my-zsh && \
-        mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
-
-    if [ "$ISJOVYAN" = true ]
-    then
-        echo 'add to .bashrc to start zsh'
-        echo 'test -f /usr/bin/zsh && /usr/bin/zsh' >> ~/.profile
-    else
-        chsh -s $(which zsh)
-    fi
-
-fi
-
-
-## echo "#### miniconda"
-## wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
-##     bash ~/miniconda.sh -b -p "$HOME/.anaconda3" && \
-##     rm ~/miniconda.sh
-
-echo "#### Mostly OS GUI stuff (not for WSL)"
-if [ "$ISJOVYAN" = true ]
-then
-
-    mkdir -p $(jupyter --data-dir)/nbextensions && \
-        cd $(jupyter --data-dir)/nbextensions && \
-        git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding && \
-        jupyter nbextension enable vim_binding/vim_binding
-
-    ## Jupyter Classic Notebook Extensions
-    jupyter nbextensions_configurator enable --sys-prefix && \
-        jupyter nbextension enable vim_binding/vim_binding --sys-prefix
-
-    export RISE_DIR=${HOME}/.local/share/jupyter/nbextensions/rise/reveal.js/css/theme
-    pip install --pre rise && \
-        jupyter nbextension install rise --py --user && \
-        jupyter nbextension enable rise --py --user && \
-        sed -i 's/^\.reveal a/body.notebook_app.rise-enabled .reveal a/g' ${RISE_DIR}/*.css
-
-    pip install hide_code && \
-        jupyter nbextension install --py hide_code --sys-prefix && \
-        jupyter nbextension enable --py hide_code --sys-prefix && \
-        jupyter serverextension enable --py hide_code --sys-prefix
-
-    ## Jupyter Lab Extensions
-    jupyter labextension enable jupyterlab_vim
-
-fi
 
 exit
 
-## echo "## gnome terminal settings"
-## # https://dimitar.me/how-to-export-import-gnome-terminal-profiles/
-## # https://gist.github.com/reavon/0bbe99150810baa5623e5f601aa93afc
-## 
-## 
-## echo "## gist from commandline"
-## sudo gem install gist
-## 
-## # mathpix, caffeine, insync
-## 
-## echo "## install jekyll"
-## sudo gem install ruby bundler
-## sudo apt-get install ruby-dev zlib1g-dev
-## mkdir tmp-jekyll && cd tmp-jekyll
-## cat <<- EOF > Gemfile
-##     gem 'github-pages'
-##     source 'https://rubygems.org'
-## EOF
-## bundle install && cd ../ && rm -rf tmp-jekyll
