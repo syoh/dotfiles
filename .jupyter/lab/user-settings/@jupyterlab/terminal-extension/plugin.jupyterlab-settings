@@ -6,5 +6,7 @@
 
     // Font size
     // The font size used to render text.
-    "fontSize": 19
+    "fontSize": 19,
+        
+    "pasteWithCtrlV": false
 }
