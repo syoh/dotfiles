@@ -96,11 +96,7 @@ then
         jupyter serverextension enable --py hide_code --sys-prefix
 
     ## Jupyter Lab Extensions
-    wget https://github.com/jwkvam/jupyterlab-vim/archive/9fb400c848f2bacccc5d6cb8671a6bdb5fe386ef.zip && \
-        unzip 9fb400c848f2bacccc5d6cb8671a6bdb5fe386ef.zip && \
-        cd jupyterlab-vim-9fb400c848f2bacccc5d6cb8671a6bdb5fe386ef && \
-        jupyter labextension install .
-
+    ## installed in docker images
     jupyter labextension enable jupyterlab_vim
 
 fi
