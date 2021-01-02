@@ -132,6 +132,11 @@ alias ycp="yadm commit && yadm push"
 
 alias gacp="git add -u && git commit && git push"
 alias gcp="git commit && git push"
+alias gst="git status"
+
+# watch, build, and serve jupyter-book locally
+alias jbs='mkdir -p _static && wget -nc -O _static/live.js https://livejs.com/live.js; python -m http.server --directory _build/html 2>/dev/null &; while inotifywait -re modify --exclude='_build' .; do jb build .; done'
+alias jbc='rm _static/live.js; rmdir _static'
 
 # keyboard bindings
 bindkey "jk" vi-cmd-mode
@@ -148,3 +153,23 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/syoh/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/syoh/.miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/syoh/.miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/syoh/.miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH="$HOME/.rbenv/bin:/home/syoh/.rbenv/versions/2.7.1/bin:$PATH"
+eval "$(rbenv init -)"
+
+cd $HOME
