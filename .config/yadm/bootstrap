@@ -5,7 +5,7 @@ USERNAME=$(echo $HOME | cut -d"/" -f3)
 
 [[ $(echo $USERNAME | grep -c jovyan) != 0 ]]   && ISJOVYAN=true || ISJOVYAN=false
 [[ $(groups | grep -c sudo) != 0 ]]             && ISSUDOER=true || ISSUDOER=false
-[[ "$GRANT_SUDO" = yes && "$ISJOVYAN" = true ]] && ISSUDOER=true || ISSUDOER=false
+# [[ "$GRANT_SUDO" = yes && "$ISJOVYAN" = true ]] && ISSUDOER=true || ISSUDOER=false # sudoer in jupyter notebook
 [[ $WSL_DISTRO_NAME ]]                          && ISWSL=true    || ISWSL=false
 [[ $(command -v gnome-terminal) ]]              && ISGUI=true    || ISGUI=false
 
