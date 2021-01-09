@@ -32,10 +32,9 @@ then
         less
         # pdftk \
 
-    echo "#### ruby and travis"
+    echo "#### ruby"
     sudo apt-get install -y --no-install-recommends \
-        ruby ruby-dev && \
-        gem install travis --user-install --no-document
+        ruby ruby-dev
 
     echo "#### Native OS stuff"
     if [ "$ISJOVYAN" = false ]
