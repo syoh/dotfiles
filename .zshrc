@@ -170,7 +170,10 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export PATH="$HOME/.rbenv/bin:/home/syoh/.rbenv/versions/2.7.1/bin:$PATH"
-eval "$(rbenv init -)"
+if command -v rbenv &> /dev/null
+then
+	eval "$(rbenv init -)"
+fi
 
 cd $HOME
 
