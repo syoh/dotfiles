@@ -173,3 +173,9 @@ export PATH="$HOME/.rbenv/bin:/home/syoh/.rbenv/versions/2.7.1/bin:$PATH"
 eval "$(rbenv init -)"
 
 cd $HOME
+
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+export LIBGL_ALWAYS_INDIRECT=1
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx

@@ -117,3 +117,9 @@ if ! shopt -oq posix; then
 fi
 
 bind '"jk":vi-movement-mode'
+
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+export LIBGL_ALWAYS_INDIRECT=1
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
