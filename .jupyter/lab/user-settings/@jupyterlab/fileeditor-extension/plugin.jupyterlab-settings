@@ -10,7 +10,7 @@
     // values from current theme are used.
     "editorConfig": {
         "fontFamily": null,
-        "fontSize": 19,
+        "fontSize": 16,
         "lineHeight": null,
         "lineNumbers": true,
         "lineWrap": "on",

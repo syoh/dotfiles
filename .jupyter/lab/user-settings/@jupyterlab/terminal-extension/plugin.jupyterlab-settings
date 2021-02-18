@@ -6,7 +6,13 @@
 
     // Font size
     // The font size used to render text.
-    "fontSize": 19,
-        
-    "pasteWithCtrlV": false
+    "fontSize": 16,
+
+    // Paste with Ctrl+V
+    // Enable pasting with Ctrl+V.  This can be disabled to use Ctrl+V in the vi editor, for instance.  This setting has no effect on macOS, where Cmd+V is available
+    "pasteWithCtrlV": false,
+
+    // Theme
+    // The theme for the terminal.
+    "theme": "dark"
 }
