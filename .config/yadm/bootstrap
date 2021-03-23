@@ -100,8 +100,7 @@ then
         jupyter serverextension enable --py hide_code --sys-prefix
 
     ## Jupyter Lab Extensions
-    ## installed in docker images
-    jupyter labextension enable jupyterlab_vim
+    jupyter labextension install @axlair/jupyterlab_vim
 
 fi
 
