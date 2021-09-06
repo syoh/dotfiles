@@ -85,7 +85,8 @@ then
         jupyter nbextension enable vim_binding/vim_binding
 
     ## Jupyter Classic Notebook Extensions
-    jupyter nbextensions_configurator enable --sys-prefix && \
+    pip install jupyter_nbextensions_configurator && \
+        jupyter nbextensions_configurator enable --sys-prefix && \
         jupyter nbextension enable vim_binding/vim_binding --sys-prefix
 
     export RISE_DIR=${HOME}/.local/share/jupyter/nbextensions/rise/reveal.js/css/theme
