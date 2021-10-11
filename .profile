@@ -25,11 +25,3 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-
-# jupyter terminal doesn't have chsh
-# start zsh manually
-if [ "$USER" = jovyan ]
-then
-    test -f /usr/bin/zsh && /usr/bin/zsh
-fi
-
