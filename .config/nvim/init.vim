@@ -9,8 +9,6 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
     Plug 'jalvesaq/Nvim-R'
     Plug 'lervag/vimtex'
     Plug 'honza/vim-snippets'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
     Plug 'powerline/powerline'
     Plug 'tpope/vim-git'
     Plug 'tpope/vim-fugitive'
@@ -20,6 +18,7 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
     Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'wesQ3/vim-windowswap'
     Plug 'Shougo/deoplete.nvim'
+    Plug 'vim-airline/vim-airline'
 
     function! BuildComposer(info)
       if a:info.status != 'unchanged' || a:info.force
