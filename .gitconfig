@@ -1,7 +1,8 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
 [user]
 	email = syoh@ucsb.edu
 	name = Sang-Yun Oh
-[credential]
-	helper = cache --timeout=36000
 [core]
-	editor = vim
+        editor = vim

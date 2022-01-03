@@ -148,7 +148,7 @@ noremap <leader>w :call DeleteTrailingWS()<CR>
 """"""""""""""""""""
 "" vim-template
 let g:user = "Sang-Yun Oh"                                         
-let g:email = "syoh@pstat.ucsb.edu"
+let g:email = "syoh@ucsb.edu"
 
 let g:templates_no_autocmd = 1
 let g:templates_no_builtin_templates = 1
