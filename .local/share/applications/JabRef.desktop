@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Terminal=false
-Icon=/usr/local/share/JabRef/lib/JabRef.png
-Exec=bash -c "[ -d ~/.config/jabref ] || mkdir ~/.config/jabref; cd ~/.config/jabref; /usr/local/bin/JabRef"
-Name=JabRef
