@@ -1,6 +1,3 @@
-bindkey "jk" vi-cmd-mode        # keyboard bindings
-export EDITOR='vim'             # default editor
-
 ### ohmyzsh
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -14,6 +11,9 @@ zstyle ':omz:update' frequency 13 # in days
 plugins=(gh git vi-mode docker gcloud kubectl helm)
 
 source $ZSH/oh-my-zsh.sh
+
+bindkey "jk" vi-cmd-mode        # keyboard bindings
+export EDITOR='vim'             # default editor
 
 ### aliases
 if [ -f ~/.bash_aliases ]; then
