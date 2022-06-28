@@ -2,13 +2,26 @@
 
 ```bash
 sudo apt install curl wget git yadm
-curl -s -o gh.deb \
-  https://github.com/cli/cli/releases/download/v2.13.0/gh_2.13.0_linux_amd64.deb \
-&& sudo dpkg -i gh_2.13.0_linux_amd64.deb \
+curl -fsSL \
+    https://github.com/cli/cli/releases/download/v2.13.0/gh_2.13.0_linux_amd64.deb \
+    -o gh.deb 
+&& sudo dpkg -i gh.deb \
 && sudo apt install -f
 
 gh auth login -h github.com -s codespace,workflow -p https --web \
 && yadm clone https://github.com/syoh/dotfiles.git
+
+curl -fsSL https://get.docker.com -o get-docker.sh \
+&& sudo sh get-docker.sh \
+&& sudo groupadd docker \
+&& sudo usermod -aG docker $USER \
+&& newgrp docker 
+
+sudo apt-get install -y zsh powerline fonts-powerline \
+&& RUNZSH=no CHSH=no sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)" \
+&& test -f ~/.zshrc.pre-oh-my-zsh \
+&& mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc \
+&& chsh -s $(which zsh)
 
 # vscode
 sudo apt-get install wget gpg apt-transport-https
