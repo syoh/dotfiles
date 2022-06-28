@@ -1,10 +1,14 @@
 # dotfiles
 
 ```bash
-# yadm
-# git
-sudo apt install git yadm 
-# gh
+sudo apt install curl wget git yadm
+curl -s -o gh.deb \
+  https://github.com/cli/cli/releases/download/v2.13.0/gh_2.13.0_linux_amd64.deb \
+&& sudo dpkg -i gh_2.13.0_linux_amd64.deb \
+&& sudo apt install -f
+
+gh auth login -h github.com -s codespace,workflow -p https --web \
+&& yadm clone https://github.com/syoh/dotfiles.git
 
 # vscode
 sudo apt-get install wget gpg apt-transport-https
