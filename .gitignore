@@ -1,7 +1,0 @@
-.cache/
-.config/google-chrome/
-.local/lib/python3.7/
-.config/Slack
-.thunderbird/
-.mozilla/firefox/
-jabref.xml filter=ignoreWindowSizes
