@@ -1,10 +1,8 @@
 #!/bin/bash
 
-export DEBIAN_FRONTEND=noninteractive
-
 sudo apt-get update
 
-sudo apt-get install wget zsh -y \
+DEBIAN_FRONTEND=noninteractive sudo apt-get install wget zsh -y \
     && RUNZSH=no CHSH=no sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
