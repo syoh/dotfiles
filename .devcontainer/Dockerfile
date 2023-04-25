@@ -4,6 +4,7 @@ RUN useradd -ms /bin/bash someuser
 
 RUN apt-get update \
   && apt-get install -y \
+        curl \
         sudo \
         git \
         zsh \
