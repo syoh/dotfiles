@@ -3,5 +3,5 @@
         // Path is relataive to the devcontainer.json file.
         "dockerfile": "Dockerfile"
     },
-	"remoteUser": "someuser"
+	//"remoteUser": "someuser"
 }
