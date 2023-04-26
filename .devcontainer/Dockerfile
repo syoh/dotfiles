@@ -17,12 +17,8 @@ RUN useradd -ms /bin/zsh ${USER} && \
 USER ${USER}
 WORKDIR /home/${USER}
 
-RUN mkdir -p ~/.local/bin 
-ENV PATH /home/${USER}/.local/bin:$PATH
-
-ENV YADM_DIR ~/.local/yadm-project
-RUN git clone https://github.com/TheLocehiliosan/yadm.git ${YADM_DIR} && \
-    ln -s ${YADM_DIR}/yadm ~/.local/bin/yadm
+RUN git clone https://github.com/TheLocehiliosan/yadm.git ~/.local/yadm-project && \
+    ln -s ~/.local/yadm-project/yadm ~/.local/bin/yadm
 
 # Install miniconda
 ENV CONDA_DIR ~/.local/conda
