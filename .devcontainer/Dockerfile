@@ -1,7 +1,6 @@
 FROM ubuntu:22.04
 
-ARG DEFAULT_USERNAME someuser
-ENV USER ${DEFAULT_USERNAME}
+ENV USER someuser
 
 RUN apt-get update \
   && apt-get install -y \
