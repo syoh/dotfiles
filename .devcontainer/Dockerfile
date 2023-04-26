@@ -16,6 +16,8 @@ RUN useradd -ms /bin/zsh ${USER} && \
 
 USER ${USER}
 WORKDIR /home/${USER}
+RUN mkdir -p ~/.local/bin
+ENV PATH ~/.local/bin:$PATH
 
 RUN git clone https://github.com/TheLocehiliosan/yadm.git ~/.local/yadm-project && \
     ln -s ~/.local/yadm-project/yadm ~/.local/bin/yadm
