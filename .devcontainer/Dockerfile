@@ -26,5 +26,6 @@ RUN git clone https://github.com/TheLocehiliosan/yadm.git ~/.local/yadm-project 
 # Install miniconda
 ENV CONDA_DIR ~/.local/conda
 RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh && \
-    /bin/bash ~/miniconda.sh -b -p ~/.local/conda
+    /bin/bash ~/miniconda.sh -b -p ~/.local/conda && \
+    rm ~/miniconda.sh
 ENV PATH ${HOME}/.local/conda/bin:$PATH
