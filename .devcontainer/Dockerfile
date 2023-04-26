@@ -15,9 +15,10 @@ RUN useradd -ms /bin/zsh ${USER} && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER ${USER}
-WORKDIR /home/${USER}
-RUN mkdir -p ~/.local/bin
-ENV PATH ~/.local/bin:$PATH
+ENV HOME /home/${USER}
+WORKDIR ${HOME}
+RUN mkdir -p ${HOME}/.local/bin
+ENV PATH ${HOME}/.local/bin:$PATH
 
 RUN git clone https://github.com/TheLocehiliosan/yadm.git ~/.local/yadm-project && \
     ln -s ~/.local/yadm-project/yadm ~/.local/bin/yadm
@@ -25,7 +26,5 @@ RUN git clone https://github.com/TheLocehiliosan/yadm.git ~/.local/yadm-project 
 # Install miniconda
 ENV CONDA_DIR ~/.local/conda
 RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh && \
-    /bin/bash ~/miniconda.sh -b -p ${CONDA_DIR}
-
-# Put conda in path so we can use conda activate
-ENV PATH $CONDA_DIR/bin:$PATH
+    /bin/bash ~/miniconda.sh -b -p ~/.local/conda
+ENV PATH ${HOME}/.local/conda/bin:$PATH
