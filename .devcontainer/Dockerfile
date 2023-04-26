@@ -16,6 +16,7 @@ RUN useradd -ms /bin/zsh ${USER} && \
 
 USER ${USER}
 WORKDIR /home/${USER}
+ENV PATH=/home/${USER}/bin:$PATH
 
 RUN mkdir ~/bin && \
     git clone https://github.com/TheLocehiliosan/yadm.git ~/.yadm-project && \
@@ -27,4 +28,4 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
      /bin/bash ~/miniconda.sh -b -p ~/conda
 
 # Put conda in path so we can use conda activate
-ENV PATH=/home/${USER}/bin:$CONDA_DIR/bin:$PATH
+ENV PATH=$CONDA_DIR/bin:$PATH
