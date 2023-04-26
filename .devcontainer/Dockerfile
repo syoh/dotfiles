@@ -16,16 +16,18 @@ RUN useradd -ms /bin/zsh ${USER} && \
 
 USER ${USER}
 WORKDIR /home/${USER}
-ENV PATH=/home/${USER}/bin:$PATH
 
-RUN mkdir ~/bin && \
-    git clone https://github.com/TheLocehiliosan/yadm.git ~/.yadm-project && \
-    ln -s ~/.yadm-project/yadm ~/bin/yadm
+RUN mkdir -p ~/.local/bin 
+ENV PATH /home/${USER}/.local/bin:$PATH
+
+ENV YADM_DIR ~/.local/yadm-project
+RUN git clone https://github.com/TheLocehiliosan/yadm.git ${YADM_DIR} && \
+    ln -s ${YADM_DIR}/yadm ~/.local/bin/yadm
 
 # Install miniconda
-ENV CONDA_DIR ~/conda
+ENV CONDA_DIR ~/.local/conda
 RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o ~/miniconda.sh && \
-     /bin/bash ~/miniconda.sh -b -p ~/conda
+    /bin/bash ~/miniconda.sh -b -p ${CONDA_DIR}
 
 # Put conda in path so we can use conda activate
-ENV PATH=$CONDA_DIR/bin:$PATH
+ENV PATH $CONDA_DIR/bin:$PATH
