@@ -9,3 +9,5 @@
 	name = Sang-Yun Oh
 [init]
 	defaultBranch = main
+[pull]
+	rebase = false
