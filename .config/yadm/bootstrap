@@ -16,3 +16,8 @@ wget https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION
 YADM_VERSION=3.2.2
 wget https://github.com/TheLocehiliosan/yadm/archive/refs/tags/${YADM_VERSION}.tar.gz -O - \
     | tar xvzf - -C${LOCAL_BIN} yadm-${YADM_VERSION}/yadm --strip-components=1
+
+if command -v compaudit &> /dev/null
+then
+    compaudit | xargs chmod g-w,o-w
+fi
