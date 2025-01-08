@@ -2,7 +2,7 @@
 	"build": {
         "dockerfile": "Containerfile"
     },
-    "workspaceMount": "source=${localWorkspaceFolder},target=/home/someuser,type=bind,consistency=cached",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/someuser/work,type=bind,consistency=cached",
     "workspaceFolder": "/home/someuser/work",
-    "onCreateCommand": "sh -c \"$(curl -fsLS get.chezmoi.io)\" -- init --apply syoh"
+    "onCreateCommand": "sh -c \"$(curl -fsLS get.chezmoi.io/lb)\" -- init --apply syoh"
 }
