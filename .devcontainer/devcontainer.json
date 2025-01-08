@@ -4,5 +4,5 @@
     },
     "workspaceMount": "source=${localWorkspaceFolder},target=/home/someuser/work,type=bind,consistency=cached",
     "workspaceFolder": "/home/someuser/work",
-    "onCreateCommand": "sh -c \"$(curl -fsLS get.chezmoi.io/lb)\" -- init --apply syoh"
+    "onCreateCommand": "sh -c \"$(curl -fsLS get.chezmoi.io/lb)\" -- -b ~/.local/bin init --apply syoh"
 }
