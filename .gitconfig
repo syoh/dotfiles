@@ -1,7 +1,0 @@
-[user]
-	email = syoh@ucsb.edu
-	name = Sang-Yun Oh (Sang)
-[init]
-	defaultBranch = main
-[pull]
-	rebase = false

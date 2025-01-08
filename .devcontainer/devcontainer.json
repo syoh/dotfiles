@@ -1,9 +1,7 @@
 {
 	"build": {
-        "dockerfile": "Dockerfile"
+        "dockerfile": "Containerfile"
     },
     "workspaceMount": "source=${localWorkspaceFolder},target=/home/someuser,type=bind,consistency=cached",
-    "workspaceFolder": "/home/someuser",
-
-    "onCreateCommand": "bash ~/.config/yadm/bootstrap"
+    "workspaceFolder": "/home/someuser"
 }
