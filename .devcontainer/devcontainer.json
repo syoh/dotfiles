@@ -3,6 +3,6 @@
         "dockerfile": "Containerfile"
     },
     "workspaceMount": "source=${localWorkspaceFolder},target=/home/someuser,type=bind,consistency=cached",
-    "workspaceFolder": "/home/someuser",
+    "workspaceFolder": "/home/someuser/work",
     "onCreateCommand": "sh -c \"$(curl -fsLS get.chezmoi.io)\" -- init --apply syoh"
 }
