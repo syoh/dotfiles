@@ -1,1 +1,8 @@
 alias qtclean="quarto install extension grantmcdermott/quarto-revealjs-clean"
+
+gacp() {
+  git add -u && \
+  git commit -m "$1" && \
+  git push
+}
+
