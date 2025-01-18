@@ -15,6 +15,15 @@ Change default shell (password-less sudo and exouser):
 sudo chsh -s /bin/zsh exouser
 ```
 
+### Run all commands
+
+```bash
+sudo chsh -s /bin/zsh exouser
+sudo apt-get update && sudo apt-get install -y zsh
+sh -c "$(curl -fsLS get.chezmoi.io/lb)" -- -b ~/.local/bin init --apply syoh
+```
+
+
 ## Devcontainer
 
 In `devcontainer.json` (top level),
