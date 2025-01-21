@@ -6,3 +6,4 @@ gacp() {
   git push
 }
 
+alias clexport="claat export -o html *.md"
