@@ -23,7 +23,7 @@
 {{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
 
-{{- $wsl:= env "CODESPACES" | not | not -}}
+{{- $codespaces:= env "CODESPACES" | not | not -}}
 
 sourceDir: {{ .chezmoi.sourceDir | quote }}
 
@@ -31,3 +31,8 @@ data:
   name: {{ $name | quote }}
   email: {{ $email | quote }}
   codespaces: {{ $codespaces }}
+
+edit:
+  command: code
+  args:
+    - --wait
