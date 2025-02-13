@@ -1,9 +1,23 @@
 alias qtclean="quarto install extension grantmcdermott/quarto-revealjs-clean"
 
 gacp() {
+  if [ -z "$1" ]; then
+    echo "Commit message is required"
+    return 1
+  fi
   git add -u && \
   git commit -m "$1" && \
   git push
 }
 
 alias clexport="claat export -o html *.md"
+
+sshkeysync() {
+  if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null; then
+    cp /mnt/c/Users/syoh/.ssh/* ~/.ssh/.
+    chmod 600 ~/.ssh/*
+    echo "SSH keys synchronized and permissions set to 600."
+  else
+    echo "Not running on WSL. No action taken."
+  fi
+}
