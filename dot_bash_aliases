@@ -34,5 +34,5 @@ venmo2csv() {
 venmo2qbo() {
   fname_root=$(basename "$1" .csv)
   venmo2csv $1 |                                   # cleanup venmo csv 
-    csvcut -c date,from,to,"amount (total),note"   # select columns for QBO
+    csvcut -c Date,From,To,"Amount (total),Note"   # select columns for QBO
 }
