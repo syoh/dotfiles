@@ -9,7 +9,7 @@ ZSH_THEME="robbyrussell"
 zstyle ':omz:update' mode auto      
 zstyle ':omz:update' frequency 13
 
-plugins=(git vi-mode)
+plugins=(git vi-mode azure)
 
 source $ZSH/oh-my-zsh.sh
 
